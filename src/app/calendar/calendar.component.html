@@ -1,0 +1,33 @@
+<p>
+  calendar works!
+</p>
+<div>
+  <!--<div *ngFor="let value of groupedArrayByDate">-->
+    <!--{{value.date}}-->
+    <!--<div></div>-->
+  <!--</div>-->
+</div>
+
+<p>a {{forecastDates}}</p>
+
+<div class="grid-container">
+
+  <div class="web-header" *ngFor="let hour of displayedHours">{{hour}}</div>
+
+  <ng-container *ngFor="let date of forecastDates">
+    <div class="grid-item mobile-header">HEADER: {{date}}</div>
+    <ng-container *ngFor="let hour of displayedHours">
+      <ng-container *ngFor="let forecast of displayedForecast[date]">
+        <div class="grid-item" *ngIf="forecast?.time === hour">
+          <ng-container *ngIf="forecast.date">
+            <img src="{{'../../assets/icons/' + forecast.conditionCode + '.svg'}}">
+            {{forecast?.date}} {{forecast?.time}} {{forecast?.airTemperature}}
+          </ng-container>
+          <ng-container *ngIf="!forecast.date">
+            <h2>N/A</h2>
+          </ng-container>
+        </div>
+      </ng-container>
+    </ng-container>
+  </ng-container>
+</div>
