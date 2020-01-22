@@ -1,14 +1,17 @@
-<p>
-  calendar works!
-</p>
-<div>
+<!--<p>-->
+  <!--calendar works!-->
+<!--</p>-->
+<!--<div>-->
   <!--<div *ngFor="let value of groupedArrayByDate">-->
-    <!--{{value.date}}-->
-    <!--<div></div>-->
+  <!--{{value.date}}-->
+  <!--<div></div>-->
   <!--</div>-->
-</div>
+<!--</div>-->
 
-<p>a {{forecastDates}}</p>
+<!--<p>a {{forecastDates}}</p>-->
+<h2 class="calendar__title">
+  {{currentDate}}
+</h2>
 
 <div class="grid-container">
 
@@ -21,10 +24,11 @@
         <div class="grid-item" *ngIf="forecast?.time === hour">
           <ng-container *ngIf="forecast.date">
             <img src="{{'../../assets/icons/' + forecast.conditionCode + '.svg'}}">
-            {{forecast?.date}} {{forecast?.time}} {{forecast?.airTemperature}}
+            <!--{{forecast?.date}}-->
+            {{forecast?.time}} {{forecast?.airTemperature}}
           </ng-container>
           <ng-container *ngIf="!forecast.date">
-            <h2>N/A</h2>
+            <h3>N/A</h3>
           </ng-container>
         </div>
       </ng-container>

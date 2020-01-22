@@ -938,7 +938,7 @@ export class CalendarComponent implements OnInit {
     ]
   };
 
-  displayedHours = [2, 6, 10, 14, 18, 22];
+  displayedHours = [6, 10, 14, 18, 22, 2];
   arrayWitDate = [];
 
   groupedArrayByDate = {};
@@ -947,6 +947,8 @@ export class CalendarComponent implements OnInit {
   forecastDates = [];
 
   displayedForecast = {};
+
+  currentDate;
 
   constructor() {
   }
@@ -962,8 +964,16 @@ export class CalendarComponent implements OnInit {
     console.log(this.groupedArrayByDate);
     this.forecastDates = Object.keys(this.groupedArrayByDate);
 
+    this.setCurrentDate();
+
     this.remapDisplayedForecast();
 
+  }
+
+  setCurrentDate() {
+    this.currentDate = new Date(this.forecastDates[0]).toLocaleString('default', {month: 'long'}) +
+      ' ' + new Date(this.forecastDates[0]).getUTCDate() +
+      '-' + new Date(this.forecastDates[this.forecastDates.length - 1]).getUTCDate();
   }
 
   remapDisplayedForecast() {

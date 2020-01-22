@@ -4,6 +4,74 @@
 }
 
 .top-bar {
-  margin: 24px;
+  padding: 30px 50px;
+  font-size: 35px;
+  background-color: white;
+  color: #5FA6F1;
+  font-weight: bold;
 
+  &__title {
+    text-shadow: 2px 0;
+    letter-spacing: 2px;
+  }
 }
+
+.layout-container {
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 1px;
+}
+
+.details-card {
+  place-content: center;
+  align-items: center;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 100%;
+  max-width: 20%;
+  width: 250px;
+  height: 500px;
+  margin: 50px;
+  background-color: white
+}
+
+.weather-calendar {
+  place-content: center;
+  align-items: center;
+  flex-direction: row;
+  box-sizing: border-box;
+  display: flex;
+  flex: 1 1 100%;
+  max-width: 80%;
+}
+
+@media screen and (max-width: 960px) {
+  .details-card {
+    width: 100%;
+    height: 60%;
+    background-color: #5ea6f1;
+    margin: 0;
+    max-width: unset;
+    align-items: unset;
+  }
+
+  .layout-container {
+    display: block;
+    flex-direction: unset;
+    box-sizing: unset;
+    flex: content;
+  }
+
+  .top-bar {
+    background-color: #5ea6f1;
+    color: white;
+    font-size: 35px;
+    padding: 30px 30px;
+  }
+}
+
+
+
+

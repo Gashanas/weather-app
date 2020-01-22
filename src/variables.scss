@@ -1,0 +1,14 @@
+$background-color: #F5F6FA;
+$white: rgba(255, 255, 255, 0.8);
+
+//layout-variables
+//Base unit
+$_base-unit: 4px;
+
+//Spacing: margin & paddings
+$_spacing-xs: $_base-unit;
+$_spacing-sm: $_base-unit * 2;
+$_spacing-md: $_base-unit * 3;
+$_spacing-lg: $_base-unit * 6;
+$_spacing-xl: $_base-unit * 8;
+
