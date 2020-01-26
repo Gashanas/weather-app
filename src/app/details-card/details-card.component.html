@@ -4,7 +4,8 @@
                bindLabel="name"
                autofocus
                bindValue="code"
-               [(ngModel)]="selectedPersonId">
+               placeholder="City"
+               [(ngModel)]="selectedCity">
     </ng-select>
 
     <div class="forecast-overview" *ngIf="forecast.date">
@@ -47,6 +48,8 @@
       </div>
 
     </div>
+
+    <p *ngIf="!forecast.date" class="card__label">Ooops... There are no details for this date</p>
 
   </div>
 

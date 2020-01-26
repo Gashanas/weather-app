@@ -10,6 +10,7 @@ import {ForecastTimestamp} from '../shared/types';
 export class DetailsCardComponent implements OnInit {
 
   icons = forecastDetails;
+  selectedCity = "acokavai";
 
   items2: any[] = [{id: 0, payload: {label: 'Tom'}},
     {id: 1, payload: {label: 'John'}},

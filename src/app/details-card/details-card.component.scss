@@ -73,16 +73,21 @@
   }
 
   ::ng-deep .ng-value {
-    margin-top: 8px;
+    margin-top: 5px;
   }
 
   ::ng-deep input {
     font-size: inherit;
   }
 
+  ::ng-deep .ng-placeholder {
+    font-size: inherit;
+    margin-top: 5px;
+  }
+
   ::ng-deep .ng-arrow-wrapper {
     content: url("../../assets/icons/search.svg");
-    margin-top: 5px;
+    margin-top: 3px;
     margin-right: 5px;
   }
 }
