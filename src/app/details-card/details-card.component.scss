@@ -1,0 +1,87 @@
+.card {
+  place-content: center;
+  width: 350px;
+  height: 570px;
+  margin: 50px;
+  background-color: #5FA6F1;
+  border-radius: 20px;
+  color: white;
+  //text-align: center;
+  //color: white;
+
+  //div {
+  //  display: block !important;
+  //}
+
+  .card-container {
+    margin: 20px;
+  }
+
+  .forecast-overview {
+    margin: 40px 15px;
+
+    .forecast-details {
+      img {
+        width: 20px;
+        margin-right: 10px;
+        height: 18px;
+      }
+    }
+  }
+
+  .temperature-container {
+    display: flex
+  }
+
+  .forecast-icon {
+    width: 90px;
+  }
+
+  .card__label {
+    font-size: 25px;
+    font-weight: bold;
+
+    &--large {
+      font-size: 60px;
+      font-weight: bold;
+    }
+  }
+
+  .card__copy {
+    font-size: 18px;
+  }
+
+  ::ng-deep .ng-select-container {
+    -webkit-border-radius: 10px;
+    -moz-border-radius: 10px;
+    border-radius: 10px;
+  }
+
+  ::ng-deep ng-dropdown-panel {
+    -webkit-border-radius: 0 0 10px 10px;
+    -moz-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+  }
+
+  ::ng-deep .ng-dropdown-panel-items {
+    -webkit-border-radius: 0 0 10px 10px;
+    -moz-border-radius: 0 0 10px 10px;
+    border-radius: 0 0 10px 10px;
+  }
+
+  ::ng-deep .ng-value {
+    margin-top: 8px;
+  }
+
+  ::ng-deep input {
+    font-size: inherit;
+  }
+
+  ::ng-deep .ng-arrow-wrapper {
+    content: url("../../assets/icons/search.svg");
+    margin-top: 5px;
+    margin-right: 5px;
+  }
+}
+
+

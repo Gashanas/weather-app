@@ -1,0 +1,62 @@
+<div class="card">
+  <div class="card-container">
+    <ng-select class="autocomplete-input" style="border-radius: 20px" [items]="items"
+               bindLabel="name"
+               autofocus
+               bindValue="code"
+               [(ngModel)]="selectedPersonId">
+    </ng-select>
+
+    <div class="forecast-overview">
+      <div class="temperature-container">
+        <img class="forecast-icon" src="{{'../../assets/icons/' + forecast.conditionCode + '.svg'}}">
+        <span class="card__label--large"><!--{{forecast.airTemperature}}-->5<span>&#176;</span></span>
+      </div>
+      <p class="card__label">Now it's {{forecast.conditionCode}}</p>
+
+      <div class="forecast-details">
+        <p>
+          <img src="{{'../../assets/icons/' + icons.WIND_SPEED.icon}}">
+          <span class="card__copy">{{icons.WIND_SPEED.displayValue}} {{forecast.windSpeed}}</span>
+        </p>
+
+        <p>
+          <img src="{{'../../assets/icons/' + icons.WIND_GUST.icon}}">
+          <span>{{icons.WIND_GUST.displayValue}} {{forecast.windGust}}</span>
+        </p>
+
+        <p>
+          <img src="{{'../../assets/icons/' + icons.WIND_DIRECTION_WHITE.icon}}">
+          <span>{{icons.WIND_DIRECTION_WHITE.displayValue}} {{forecast.windDirection}}</span>
+        </p>
+
+        <p>
+          <img src="{{'../../assets/icons/' + icons.CLOUD_COVER.icon}}">
+          <span>{{icons.CLOUD_COVER.displayValue}} {{forecast.cloudCover}}</span>
+        </p>
+
+        <p>
+          <img src="{{'../../assets/icons/' + icons.SEA_LEVEL.icon}}">
+          <span>{{icons.SEA_LEVEL.displayValue}} {{forecast.seaLevelPressure}}</span>
+        </p>
+
+        <p>
+          <img src="{{'../../assets/icons/' + icons.PRECIPITATION.icon}}">
+          <span>{{icons.PRECIPITATION.displayValue}} {{forecast.totalPrecipitation}}</span>
+        </p>
+      </div>
+
+    </div>
+
+  </div>
+
+
+    <!--<input class="autocomplete-input"-->
+           <!--style="color: black"-->
+           <!--input-autocomplete-->
+           <!--[class]="autocomplete-input"-->
+           <!--[items]="items2"-->
+           <!--[config]="config2"-->
+           <!--placeholder="City"-->
+           <!--auto-complete-placeholder="'LOL'">-->
+</div>

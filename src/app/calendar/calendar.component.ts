@@ -1,4 +1,4 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Output} from '@angular/core';
 
 @Component({
   selector: 'app-calendar',
@@ -942,13 +942,14 @@ export class CalendarComponent implements OnInit {
   arrayWitDate = [];
 
   groupedArrayByDate = {};
-  groupedByHour = {};
 
   forecastDates = [];
 
   displayedForecast = {};
 
   currentDate;
+
+  @Output() selectedForecast;
 
   constructor() {
   }
@@ -967,7 +968,6 @@ export class CalendarComponent implements OnInit {
     this.setCurrentDate();
 
     this.remapDisplayedForecast();
-
   }
 
   setCurrentDate() {

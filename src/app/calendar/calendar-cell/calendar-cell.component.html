@@ -1,0 +1,12 @@
+<div class="cell-container">
+  <p *ngIf="isToday" class="text--info">Now</p>
+  <div class="child">
+    <img class="forecast-icon" src="{{'../../assets/icons/' + forecast.conditionCode + '.svg'}}">
+  </div>
+  <div class="child1">
+    {{forecast?.time}}<span>&#176;</span>
+  </div>
+  <div class="child2">
+    {{forecast?.airTemperature}}
+  </div>
+</div>

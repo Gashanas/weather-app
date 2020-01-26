@@ -24,17 +24,17 @@
 }
 
 .details-card {
-  place-content: center;
-  align-items: center;
   flex-direction: row;
   box-sizing: border-box;
   display: flex;
   flex: 1 1 100%;
-  max-width: 20%;
-  width: 250px;
-  height: 500px;
-  margin: 50px;
-  background-color: white
+  max-width: 30%;
+  min-width: 400px;
+  //height: 600px;
+  //margin: 50px;
+  //background-color: #5FA6F1;
+  //border-radius: 20px;
+  //color: white;
 }
 
 .weather-calendar {
@@ -42,16 +42,15 @@
   align-items: center;
   flex-direction: row;
   box-sizing: border-box;
-  display: flex;
+  //display: flex;
   flex: 1 1 100%;
-  max-width: 80%;
 }
 
 @media screen and (max-width: 960px) {
   .details-card {
     width: 100%;
     height: 60%;
-    background-color: #5ea6f1;
+    background-color: #5FA6F1;
     margin: 0;
     max-width: unset;
     align-items: unset;
