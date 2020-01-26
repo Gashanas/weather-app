@@ -4,15 +4,18 @@
   </div>
 
   <div class="layout-container">
-    <!--<div class="details-card">a</div>-->
     <app-details-card class="details-card"
                       [forecast]="selectedForecast"
                       (selectedCity)="onCitySelect($event)"
                       [cities]="cities"
+                      [city]="defaultCity"
                       [isReady]="isReady">
     </app-details-card>
 
-
+    <!--TODO move these weekDays div inside app-calendar-->
+    <div class="week-days">
+      <div *ngFor="let date of forecastDates">{{date | weekDay}}</div>
+    </div>
     <div class="weather-calendar">
       <app-calendar (selectedForecast)="onItemSelect($event)"
                     [displayedForecast]="displayedForecast"
@@ -21,7 +24,6 @@
                     [currentDate]="currentDate"
                     [isReady]="isReady">
       </app-calendar>
-      <!--<div *ngIf="!ready" class="lds-dual-ring"></div>-->
     </div>
   </div>
 

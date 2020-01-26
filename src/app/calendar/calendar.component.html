@@ -9,7 +9,7 @@
 <div class="grid-container" *ngIf="isReady" style="text-align: center">
 
   <ng-container>
-    <div class="web-header" *ngFor="let hour of displayedHours">{{hour}}</div>
+    <div class="web-header" *ngFor="let hour of displayedHours">{{hour | time}}</div>
 
     <ng-container *ngFor="let date of forecastDates">
       <div class="grid-item mobile-header">HEADER: {{date}}</div>

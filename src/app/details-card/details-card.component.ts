@@ -14,6 +14,7 @@ export class DetailsCardComponent implements OnInit {
   @Input() forecast: ForecastTimestamp;
   @Input() isReady: boolean;
   @Input() cities: [City];
+  @Input() city: string;
   @Output() selectedCity: EventEmitter<string> = new EventEmitter();
 
   constructor() {
