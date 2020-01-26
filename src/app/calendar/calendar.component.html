@@ -10,7 +10,7 @@
     <div class="grid-item mobile-header">HEADER: {{date}}</div>
     <ng-container *ngFor="let hour of displayedHours">
       <ng-container *ngFor="let forecast of displayedForecast[date]">
-        <div class="grid-item" *ngIf="forecast?.time === hour">
+        <div class="grid-item" [ngClass]="{'grid-item--selected': forecast.selected}" *ngIf="forecast?.time === hour" (click)="onItemClick(forecast)">
           <ng-container *ngIf="forecast.date">
 
             <app-calendar-cell [forecast]="forecast"></app-calendar-cell>

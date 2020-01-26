@@ -20,7 +20,7 @@ export interface Place {
 }
 
 export interface ForecastTimestamp {
-  forecastTimeUtc: '2020-01-19 16:00:00',
+  forecastTimeUtc: string;
   airTemperature: number;
   windSpeed: number;
   windGust: number;
@@ -29,6 +29,9 @@ export interface ForecastTimestamp {
   seaLevelPressure: number;
   totalPrecipitation: number;
   conditionCode: string;
+  date?: string;
+  time?: number;
+  selected?: boolean;
 }
 
 export interface LongTermForecast {

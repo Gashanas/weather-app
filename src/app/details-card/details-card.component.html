@@ -7,22 +7,22 @@
                [(ngModel)]="selectedPersonId">
     </ng-select>
 
-    <div class="forecast-overview">
+    <div class="forecast-overview" *ngIf="forecast.date">
       <div class="temperature-container">
         <img class="forecast-icon" src="{{'../../assets/icons/' + forecast.conditionCode + '.svg'}}">
-        <span class="card__label--large"><!--{{forecast.airTemperature}}-->5<span>&#176;</span></span>
+        <span class="card__label--large">{{forecast.airTemperature}}<span>&#176;</span></span>
       </div>
       <p class="card__label">Now it's {{forecast.conditionCode}}</p>
 
       <div class="forecast-details">
         <p>
           <img src="{{'../../assets/icons/' + icons.WIND_SPEED.icon}}">
-          <span class="card__copy">{{icons.WIND_SPEED.displayValue}} {{forecast.windSpeed}}</span>
+          <span>{{icons.WIND_SPEED.displayValue}} {{forecast.windSpeed}}ms</span>
         </p>
 
         <p>
           <img src="{{'../../assets/icons/' + icons.WIND_GUST.icon}}">
-          <span>{{icons.WIND_GUST.displayValue}} {{forecast.windGust}}</span>
+          <span>{{icons.WIND_GUST.displayValue}} {{forecast.windGust}}ms</span>
         </p>
 
         <p>
@@ -32,7 +32,7 @@
 
         <p>
           <img src="{{'../../assets/icons/' + icons.CLOUD_COVER.icon}}">
-          <span>{{icons.CLOUD_COVER.displayValue}} {{forecast.cloudCover}}</span>
+          <span>{{icons.CLOUD_COVER.displayValue}} {{forecast.cloudCover}}%</span>
         </p>
 
         <p>

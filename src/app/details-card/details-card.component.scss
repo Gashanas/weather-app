@@ -1,11 +1,10 @@
 .card {
   place-content: center;
   width: 350px;
-  height: 570px;
   margin: 50px;
-  background-color: #5FA6F1;
-  border-radius: 20px;
+  background-color: #F5F6FA;
   color: white;
+  border-radius: 20px;
   //text-align: center;
   //color: white;
 
@@ -14,7 +13,11 @@
   //}
 
   .card-container {
-    margin: 20px;
+    padding: 20px;
+    background: #5ea6f1;
+    border-radius: 20px;
+    position: sticky;
+    top: 50px;
   }
 
   .forecast-overview {

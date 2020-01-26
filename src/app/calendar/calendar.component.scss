@@ -22,6 +22,10 @@
   text-align: center;
   border-bottom: 5px solid white;
 
+  &--selected {
+    border-bottom: 5px solid #5FA6F1;
+  }
+
   &--empty {
     color: #959595;
   }

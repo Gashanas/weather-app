@@ -28,3 +28,5 @@ export const forecastDetails = {
     displayValue: 'Cloud cover:'
   }
 };
+
+export const meteoApiUrl = 'https://api.meteo.lt/v1';

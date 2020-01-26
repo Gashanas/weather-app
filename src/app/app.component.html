@@ -5,11 +5,11 @@
 
   <div class="layout-container">
     <!--<div class="details-card">a</div>-->
-    <app-details-card class="details-card"></app-details-card>
+    <app-details-card class="details-card" [forecast]="selectedForecast"></app-details-card>
 
 
     <div class="weather-calendar">
-      <app-calendar></app-calendar>
+      <app-calendar (selectedForecast)="onItemSelect($event)"></app-calendar>
     </div>
   </div>
 

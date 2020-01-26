@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {forecastDetails} from '../shared/constants';
+import {ForecastTimestamp} from '../shared/types';
 
 @Component({
   selector: 'app-details-card',
@@ -40,19 +41,7 @@ export class DetailsCardComponent implements OnInit {
       'countryCode': 'LT'
     }];
 
-  @Input() forecast = {
-    forecastTimeUtc: '2020-01-19 18:00:00',
-    airTemperature: 1.8,
-    windSpeed: 2,
-    windGust: 4,
-    windDirection: 231,
-    cloudCover: 35,
-    seaLevelPressure: 1034,
-    totalPrecipitation: 0,
-    conditionCode: 'isolated-clouds',
-    date: '2020-01-19',
-    time: 18
-  };
+  @Input() forecast: ForecastTimestamp;
 
   constructor() {
   }

@@ -8,6 +8,9 @@ import {CalendarCellComponent} from './calendar/calendar-cell/calendar-cell.comp
 import {DetailsCardComponent} from './details-card/details-card.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NgSelectModule} from '@ng-select/ng-select';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {HttpClientModule} from '@angular/common/http';
+import {ForecastService} from './services/forecast.service';
 
 @NgModule({
   declarations: [
@@ -21,9 +24,11 @@ import {NgSelectModule} from '@ng-select/ng-select';
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    NgSelectModule
+    NgSelectModule,
+    BrowserAnimationsModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ForecastService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

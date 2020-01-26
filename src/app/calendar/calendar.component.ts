@@ -1,4 +1,5 @@
-import {Component, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {ForecastTimestamp} from '../shared/types';
 
 @Component({
   selector: 'app-calendar',
@@ -949,7 +950,7 @@ export class CalendarComponent implements OnInit {
 
   currentDate;
 
-  @Output() selectedForecast;
+  @Output() selectedForecast: EventEmitter<ForecastTimestamp> = new EventEmitter();
 
   constructor() {
   }
@@ -968,6 +969,17 @@ export class CalendarComponent implements OnInit {
     this.setCurrentDate();
 
     this.remapDisplayedForecast();
+  }
+
+  onItemClick(forecast) {
+    console.log(forecast);
+    this.forecastDates.forEach(date => {
+      this.displayedForecast[date].forEach(forecastDetails => {
+        forecastDetails.selected = false;
+      });
+    });
+    forecast.selected = true;
+    this.selectedForecast.emit(forecast);
   }
 
   setCurrentDate() {
