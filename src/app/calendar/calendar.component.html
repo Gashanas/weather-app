@@ -2,24 +2,31 @@
   {{currentDate}}
 </h2>
 
-<div class="grid-container">
+<div class="grid-container--loading" *ngIf="!isReady">
+  <div class="lds-dual-ring"></div>
+</div>
 
-  <div class="web-header" *ngFor="let hour of displayedHours">{{hour}}</div>
+<div class="grid-container" *ngIf="isReady" style="text-align: center">
 
-  <ng-container *ngFor="let date of forecastDates">
-    <div class="grid-item mobile-header">HEADER: {{date}}</div>
-    <ng-container *ngFor="let hour of displayedHours">
-      <ng-container *ngFor="let forecast of displayedForecast[date]">
-        <div class="grid-item" [ngClass]="{'grid-item--selected': forecast.selected}" *ngIf="forecast?.time === hour" (click)="onItemClick(forecast)">
-          <ng-container *ngIf="forecast.date">
+  <ng-container>
+    <div class="web-header" *ngFor="let hour of displayedHours">{{hour}}</div>
 
-            <app-calendar-cell [forecast]="forecast"></app-calendar-cell>
+    <ng-container *ngFor="let date of forecastDates">
+      <div class="grid-item mobile-header">HEADER: {{date}}</div>
+      <ng-container *ngFor="let hour of displayedHours">
+        <ng-container *ngFor="let forecast of displayedForecast[date]">
+          <div class="grid-item" [ngClass]="{'grid-item--selected': forecast.selected}" *ngIf="forecast?.time === hour"
+               (click)="onItemClick(forecast)">
+            <ng-container *ngIf="forecast.date">
 
-          </ng-container>
-          <ng-container *ngIf="!forecast.date">
-            <h3 class="grid-item--empty">N/A</h3>
-          </ng-container>
-        </div>
+              <app-calendar-cell [forecast]="forecast"></app-calendar-cell>
+
+            </ng-container>
+            <ng-container *ngIf="!forecast.date">
+              <h3 class="grid-item--empty">N/A</h3>
+            </ng-container>
+          </div>
+        </ng-container>
       </ng-container>
     </ng-container>
   </ng-container>

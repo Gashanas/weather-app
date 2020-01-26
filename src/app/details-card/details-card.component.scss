@@ -18,6 +18,10 @@
     border-radius: 20px;
     position: sticky;
     top: 50px;
+
+    &--loading {
+      text-align: center;
+    }
   }
 
   .forecast-overview {

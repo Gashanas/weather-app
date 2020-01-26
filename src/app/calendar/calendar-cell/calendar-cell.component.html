@@ -1,6 +1,6 @@
 <div class="cell-container">
-  <p *ngIf="isToday" class="text--info">Now</p>
-  <div class="child">
+  <p *ngIf="forecast.isNow" class="text--info">Now</p>
+  <div class="child" [ngClass]="{'spacing--top': !forecast.isNow}">
     <img class="forecast-icon" src="{{'../../assets/icons/' + forecast.conditionCode + '.svg'}}">
   </div>
   <div class="child1">

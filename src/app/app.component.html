@@ -5,11 +5,23 @@
 
   <div class="layout-container">
     <!--<div class="details-card">a</div>-->
-    <app-details-card class="details-card" [forecast]="selectedForecast"></app-details-card>
+    <app-details-card class="details-card"
+                      [forecast]="selectedForecast"
+                      (selectedCity)="onCitySelect($event)"
+                      [cities]="cities"
+                      [isReady]="isReady">
+    </app-details-card>
 
 
     <div class="weather-calendar">
-      <app-calendar (selectedForecast)="onItemSelect($event)"></app-calendar>
+      <app-calendar (selectedForecast)="onItemSelect($event)"
+                    [displayedForecast]="displayedForecast"
+                    [forecastDates]="forecastDates"
+                    [displayedHours]="displayedHours"
+                    [currentDate]="currentDate"
+                    [isReady]="isReady">
+      </app-calendar>
+      <!--<div *ngIf="!ready" class="lds-dual-ring"></div>-->
     </div>
   </div>
 

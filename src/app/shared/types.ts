@@ -32,6 +32,7 @@ export interface ForecastTimestamp {
   date?: string;
   time?: number;
   selected?: boolean;
+  isNow?: boolean;
 }
 
 export interface LongTermForecast {

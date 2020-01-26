@@ -1,4 +1,4 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 import {ForecastTimestamp} from '../shared/types';
 
 @Component({
@@ -939,16 +939,22 @@ export class CalendarComponent implements OnInit {
     ]
   };
 
-  displayedHours = [6, 10, 14, 18, 22, 2];
-  arrayWitDate = [];
+  // displayedHours = [6, 10, 14, 18, 22, 2];
+  // arrayWitDate = [];
+  //
+  // groupedArrayByDate = {};
+  //
+  // forecastDates = [];
+  //
+  // displayedForecast = {};
+  //
+  // currentDate;
 
-  groupedArrayByDate = {};
-
-  forecastDates = [];
-
-  displayedForecast = {};
-
-  currentDate;
+  @Input() displayedForecast: {};
+  @Input() displayedHours;
+  @Input() forecastDates;
+  @Input() isReady: boolean;
+  @Input() currentDate: string;
 
   @Output() selectedForecast: EventEmitter<ForecastTimestamp> = new EventEmitter();
 
@@ -956,19 +962,19 @@ export class CalendarComponent implements OnInit {
   }
 
   ngOnInit() {
-    console.log(this.forecastData.forecastTimestamps);
-
-    const newArr = this.splitTimestampProperty(this.forecastData.forecastTimestamps);
-    this.arrayWitDate = newArr;
-    console.log(newArr);
-
-    this.groupedArrayByDate = this.groupeArrayByProperty(newArr, 'date');
-    console.log(this.groupedArrayByDate);
-    this.forecastDates = Object.keys(this.groupedArrayByDate);
-
-    this.setCurrentDate();
-
-    this.remapDisplayedForecast();
+    // console.log(this.forecastData.forecastTimestamps);
+    //
+    // const newArr = this.splitTimestampProperty(this.forecastData.forecastTimestamps);
+    // this.arrayWitDate = newArr;
+    // console.log(newArr);
+    //
+    // this.groupedArrayByDate = this.groupeArrayByProperty(newArr, 'date');
+    // console.log(this.groupedArrayByDate);
+    // this.forecastDates = Object.keys(this.groupedArrayByDate);
+    //
+    // this.setCurrentDate();
+    //
+    // this.remapDisplayedForecast();
   }
 
   onItemClick(forecast) {
@@ -982,45 +988,5 @@ export class CalendarComponent implements OnInit {
     this.selectedForecast.emit(forecast);
   }
 
-  setCurrentDate() {
-    this.currentDate = new Date(this.forecastDates[0]).toLocaleString('default', {month: 'long'}) +
-      ' ' + new Date(this.forecastDates[0]).getUTCDate() +
-      '-' + new Date(this.forecastDates[this.forecastDates.length - 1]).getUTCDate();
-  }
-
-  remapDisplayedForecast() {
-    const displayedObject = {};
-    this.forecastDates.forEach(date => {
-      this.displayedHours.forEach(hour => {
-        let matchedForecast;
-        this.groupedArrayByDate[date].forEach(forecast => {
-          if (forecast.time === hour) {
-            matchedForecast = forecast;
-          }
-        });
-        displayedObject[date] = [...displayedObject[date] || [], matchedForecast || {time: hour}];
-      });
-    });
-    console.log(displayedObject);
-    this.displayedForecast = displayedObject;
-  }
-
-  splitTimestampProperty(array) {
-    return array.map(timestamp => ({
-      ...timestamp,
-      date: timestamp.forecastTimeUtc.substring(0, 10),
-      time: +timestamp.forecastTimeUtc.substring(11, 13)
-    }));
-  }
-
-  groupeArrayByProperty(array, key) {
-    const groupedArray = {};
-    const keys = [];
-    array.forEach(element => {
-      groupedArray[element[key]] = groupedArray[element[key]] || [];
-      groupedArray[element[key]].push(element);
-    });
-    return groupedArray;
-  }
 
 }
