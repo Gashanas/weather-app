@@ -1,12 +1,16 @@
 <div class="cell-container">
   <p *ngIf="forecast.isNow" class="text--info">Now</p>
+  <div class="child3">
+    {{forecast.time | time}}
+  </div>
   <div class="child" [ngClass]="{'spacing--top': !forecast.isNow}">
     <img class="forecast-icon" src="{{'../../assets/icons/' + forecast.conditionCode + '.svg'}}">
   </div>
   <div class="child1">
-    {{forecast?.time}}<span>&#176;</span>
+    {{forecast?.airTemperature}}<span>&#176;</span>
   </div>
   <div class="child2">
-    {{forecast?.airTemperature}}
+    <img class="icon" [ngStyle]="{'transform': 'rotate('+ forecast.windDirection+'deg)'}" src="{{'../../../assets/icons/' + details.WIND_DIRECTION_GREY.icon}}">
+    {{forecast?.windSpeed}}
   </div>
 </div>

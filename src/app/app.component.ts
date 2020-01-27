@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {City, ForecastTimestamp} from './shared/types';
+import {City, ForecastTimestamp, LongTermForecast} from './shared/types';
 import {ForecastService} from './services/forecast.service';
 
 @Component({
@@ -10,13 +10,14 @@ import {ForecastService} from './services/forecast.service';
 export class AppComponent implements OnInit {
 
   defaultCity = 'vilnius';
-  longTermForecastData;
+  longTermForecastData: {};
   cities: [City];
   isReady = false;
   displayedHours: number[] = [6, 10, 14, 18, 22, 2];
   forecastDates: string[];
   displayedForecast: {};
   currentDate: string;
+  selectedForecast: ForecastTimestamp;
 
   constructor(private forecastService: ForecastService) {
   }
@@ -24,7 +25,6 @@ export class AppComponent implements OnInit {
   ngOnInit() {
     this.forecastService.fetchCities().subscribe(
       result => {
-        console.log(result);
         this.cities = result;
         this.isReady = true;
         this.fetchLongTermForecast(this.defaultCity);
@@ -33,40 +33,17 @@ export class AppComponent implements OnInit {
 
   }
 
-  title = 'weather-app';
-  selectedForecast: ForecastTimestamp = {
-    forecastTimeUtc: '2020-01-19 18:00:00',
-    airTemperature: 1,
-    windSpeed: 2,
-    windGust: 4,
-    windDirection: 231,
-    cloudCover: 35,
-    seaLevelPressure: 1034,
-    totalPrecipitation: 1,
-    conditionCode: 'isolated-clouds',
-    date: '2020-01-19',
-    time: 18
-  };
-
   onItemSelect(selectedForecast) {
     this.selectedForecast = selectedForecast;
-  }
-
-  onCitySelect(city: string) {
-    console.log(city);
-    this.fetchLongTermForecast(city);
   }
 
   fetchLongTermForecast(city: string) {
     this.isReady = false;
     this.forecastService.fetchLongTermForecast(city).subscribe(
       forecastResponse => {
-        console.log('res', forecastResponse);
         this.longTermForecastData = forecastResponse;
         this.forecastDates = Object.keys(forecastResponse);
         this.displayedForecast = this.forecastService.getDisplayedForecast(this.forecastDates, this.displayedHours, forecastResponse);
-        console.log('long:', this.longTermForecastData);
-        console.log(this.displayedForecast);
         this.setCurrentDate();
         this.selectForecast();
         this.isReady = true;
@@ -75,9 +52,13 @@ export class AppComponent implements OnInit {
   }
 
   setCurrentDate() {
-    this.currentDate = new Date(this.forecastDates[0]).toLocaleString('default', {month: 'long'}) +
-      ' ' + new Date(this.forecastDates[0]).getUTCDate() +
-      '-' + new Date(this.forecastDates[this.forecastDates.length - 1]).getUTCDate();
+    const monthOfFirstDate = new Date(this.forecastDates[0]).toLocaleString('default', {month: 'long'});
+    const monthOfLastDate = new Date(this.forecastDates[this.forecastDates.length - 1]).toLocaleString('default', {month: 'long'});
+    this.currentDate = monthOfFirstDate + ' ' +
+      new Date(this.forecastDates[0]).getUTCDate() + '-' +
+      // if forecastDate[0].month === forecastDate[last].month value will be 'Month day - day' else: 'Month1 day - Month2 day'
+      (monthOfFirstDate === monthOfLastDate ? '' : ' ' + monthOfLastDate + ' ') +
+      new Date(this.forecastDates[this.forecastDates.length - 1]).getUTCDate();
   }
 
   selectForecast() {
@@ -90,6 +71,5 @@ export class AppComponent implements OnInit {
         }
       }
     );
-    console.log(this.selectedForecast);
   }
 }

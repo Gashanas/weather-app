@@ -16,48 +16,58 @@
     </div>
 
     <div *ngIf="isReady">
-      <div class="forecast-overview" *ngIf="forecast.date">
+      <div class="forecast-overview" *ngIf="forecast?.date">
         <div class="temperature-container">
-          <img class="forecast-icon" src="{{'../../assets/icons/' + forecast.conditionCode + '.svg'}}">
+          <img class="forecast-icon" src="{{'../../assets/icons/' + forecast.conditionCode + '-white.svg'}}">
           <span class="card__label--large">{{forecast.airTemperature}}<span>&#176;</span></span>
         </div>
-        <p class="card__label">Now it's {{forecast.conditionCode}}</p>
+        <div class="card__label">
+          <div *ngIf="(forecast.date | weekDay:'full') !== 'Today'">{{forecast.date | weekDay:'full'}}</div>
+          <span *ngIf="forecast.isNow">Now it's</span>
+          <span *ngIf="!forecast.isNow">{{forecast.time | time}}</span>
+          {{forecast.conditionCode}}
+        </div>
 
-        <div class="forecast-details">
-          <p>
-            <img src="{{'../../assets/icons/' + details.WIND_SPEED.icon}}">
-            <span>{{details.WIND_SPEED.displayValue}} {{forecast.windSpeed}}ms</span>
-          </p>
+        <div class="forecast-details row">
+          <div class="column">
+            <p>
+              <img src="{{'../../assets/icons/' + details.WIND_SPEED.icon}}">
+              <span>{{details.WIND_SPEED.displayValue}} {{forecast.windSpeed}}ms</span>
+            </p>
 
-          <p>
-            <img src="{{'../../assets/icons/' + details.WIND_GUST.icon}}">
-            <span>{{details.WIND_GUST.displayValue}} {{forecast.windGust}}ms</span>
-          </p>
+            <p>
+              <img src="{{'../../assets/icons/' + details.WIND_GUST.icon}}">
+              <span>{{details.WIND_GUST.displayValue}} {{forecast.windGust}}ms</span>
+            </p>
 
-          <p>
-            <img src="{{'../../assets/icons/' + details.WIND_DIRECTION_WHITE.icon}}">
-            <span>{{details.WIND_DIRECTION_WHITE.displayValue}} {{forecast.windDirection}}</span>
-          </p>
+            <p>
+              <img src="{{'../../assets/icons/' + details.WIND_DIRECTION_WHITE.icon}}"
+                   [ngStyle]="{'transform': 'rotate('+ forecast.windDirection+'deg)'}">
+              <span>{{details.WIND_DIRECTION_WHITE.displayValue}} {{forecast.windDirection}}</span>
+            </p>
+          </div>
 
-          <p>
-            <img src="{{'../../assets/icons/' + details.CLOUD_COVER.icon}}">
-            <span>{{details.CLOUD_COVER.displayValue}} {{forecast.cloudCover}}%</span>
-          </p>
+          <div class="column">
+            <p>
+              <img src="{{'../../assets/icons/' + details.CLOUD_COVER.icon}}">
+              <span>{{details.CLOUD_COVER.displayValue}} {{forecast.cloudCover}}%</span>
+            </p>
 
-          <p>
-            <img src="{{'../../assets/icons/' + details.SEA_LEVEL.icon}}">
-            <span>{{details.SEA_LEVEL.displayValue}} {{forecast.seaLevelPressure}}</span>
-          </p>
+            <p>
+              <img src="{{'../../assets/icons/' + details.SEA_LEVEL.icon}}">
+              <span>{{details.SEA_LEVEL.displayValue}} {{forecast.seaLevelPressure}}</span>
+            </p>
 
-          <p>
-            <img src="{{'../../assets/icons/' + details.PRECIPITATION.icon}}">
-            <span>{{details.PRECIPITATION.displayValue}} {{forecast.totalPrecipitation}}</span>
-          </p>
+            <p>
+              <img src="{{'../../assets/icons/' + details.PRECIPITATION.icon}}">
+              <span>{{details.PRECIPITATION.displayValue}} {{forecast.totalPrecipitation}}</span>
+            </p>
+          </div>
         </div>
 
       </div>
 
-      <p *ngIf="!forecast.date" class="card__label">Ooops... There are no details for this date</p>
+      <p *ngIf="!forecast?.date" class="card__label">Ooops... There are no details for this date</p>
 
     </div>
   </div>

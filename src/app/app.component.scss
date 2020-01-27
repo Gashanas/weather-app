@@ -31,17 +31,13 @@
   flex: 1 1 100%;
   max-width: 30%;
   min-width: 400px;
-  //height: 600px;
-  //margin: 50px;
-  //background-color: #5FA6F1;
-  //border-radius: 20px;
-  //color: white;
 }
 
 .week-days {
   margin-top: 100px;
   color: #5A5A5A;
   font-size: 15px;
+  text-align: end;
   div {
     margin-top: 185px;
   }
@@ -53,18 +49,20 @@
   flex-direction: row;
   box-sizing: border-box;
   margin-right: 40px;
-  //display: flex;
   flex: 1 1 100%;
 }
 
 @media screen and (max-width: 960px) {
   .details-card {
     width: 100%;
-    height: 60%;
     background-color: #5FA6F1;
     margin: 0;
     max-width: unset;
+    min-width: unset;
     align-items: unset;
+    position: sticky;
+    top: 0;
+    z-index: 2;
   }
 
   .layout-container {
@@ -78,7 +76,14 @@
     background-color: #5ea6f1;
     color: white;
     font-size: 35px;
-    padding: 30px 30px;
+  }
+
+  .weather-calendar {
+    margin: unset;
+  }
+
+  .week-days {
+    display: none;
   }
 }
 

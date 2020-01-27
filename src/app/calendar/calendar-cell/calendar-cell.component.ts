@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {forecastDetails} from '../../shared/constants';
 
 @Component({
   selector: 'app-calendar-cell',
@@ -8,8 +9,10 @@ import {Component, Input, OnInit} from '@angular/core';
 export class CalendarCellComponent implements OnInit {
 
   @Input() forecast;
+  details = forecastDetails;
 
-  constructor() { }
+  constructor() {
+  }
 
   ngOnInit() {
   }

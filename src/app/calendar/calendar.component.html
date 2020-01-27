@@ -8,14 +8,19 @@
 
 <div class="grid-container" *ngIf="isReady" style="text-align: center">
 
-  <ng-container>
-    <div class="web-header" *ngFor="let hour of displayedHours">{{hour | time}}</div>
 
-    <ng-container *ngFor="let date of forecastDates">
-      <div class="grid-item mobile-header">HEADER: {{date}}</div>
-      <ng-container *ngFor="let hour of displayedHours">
-        <ng-container *ngFor="let forecast of displayedForecast[date]">
-          <div class="grid-item" [ngClass]="{'grid-item--selected': forecast.selected}" *ngIf="forecast?.time === hour"
+  <div class="web-header" *ngFor="let hour of displayedHours">{{hour | time}}</div>
+
+  <ng-container *ngFor="let date of forecastDates">
+    <div class="grid-item mobile-header panel-heading"
+         (click)="collapse(date)">{{date | weekDay:'full'}}
+      <div [ngClass]="{'arrow--up': collapsibleItems[date], 'arrow--down': !collapsibleItems[data]}"></div>
+    </div>
+    <ng-container *ngFor="let hour of displayedHours">
+      <ng-container *ngFor="let forecast of displayedForecast[date]">
+        <ng-container *ngIf="collapsibleItems[date] || !isMobile()">
+          <div class="grid-item" [ngClass]="{'grid-item--selected': forecast.selected}"
+               *ngIf="forecast?.time === hour"
                (click)="onItemClick(forecast)">
             <ng-container *ngIf="forecast.date">
 

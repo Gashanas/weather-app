@@ -6,15 +6,15 @@
   <div class="layout-container">
     <app-details-card class="details-card"
                       [forecast]="selectedForecast"
-                      (selectedCity)="onCitySelect($event)"
+                      (selectedCity)="fetchLongTermForecast($event)"
                       [cities]="cities"
                       [city]="defaultCity"
                       [isReady]="isReady">
     </app-details-card>
 
-    <!--TODO move these weekDays div inside app-calendar-->
+    <!--TODO move these weekDays div inside app-calendar so it would be possible to reuse it with calendar if needed-->
     <div class="week-days">
-      <div *ngFor="let date of forecastDates">{{date | weekDay}}</div>
+      <div *ngFor="let date of forecastDates">{{date | weekDay:'short'}}</div>
     </div>
     <div class="weather-calendar">
       <app-calendar (selectedForecast)="onItemSelect($event)"

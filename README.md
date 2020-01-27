@@ -4,7 +4,9 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Run `npm i` to install dependencies
+
+Run `ng serve` or `npm start` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
 ## Code scaffolding
 
@@ -25,3 +27,11 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+## Todo
+
+* Improve forecast calendar mobile view.
+* Add functionality for updating calendar labels (hours). So it would be possible for customer to see forecast of each one or two hours. Current remapped forecast data structure is suitable for that.
+* Implement language selection. Add lithuanian language and translate all texts.
+* Add collapse and forecast selection animations.
+* Consider using icons as material icons instead of <img> elements, and register it to matIconRegistry. It could make current icon usage code cleaner

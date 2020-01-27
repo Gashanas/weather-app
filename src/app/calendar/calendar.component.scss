@@ -3,14 +3,9 @@
 .grid-container {
   display: grid;
   grid-template-columns: auto auto auto auto auto auto;
-  // uncomment white
-  //background-color: white;
-  //padding: 10px;
   border-radius:20px;
   margin: $_spacing-md;
   border: 10px solid rgba(255, 255, 255, 0.8);
-
-  // coment these
   grid-gap: 2px;
   background-color: #F5F6FA;
 
@@ -49,29 +44,8 @@
   font-size: 15px;
   text-align: center;
   color: #5A5A5A;
-
-  //comment this
   background-color: rgba(255, 255, 255, 0.8);
 }
-
-//.border-override {
-//  position: absolute;
-//  top: 0;
-//  bottom: 0;
-//  left: 0;
-//  right: 0;
-//  border: 2px solid #ee4b43;
-//}
-
-//.grid-container:before {
-//  content: ' ';
-//  position: absolute;
-//  top: 0;
-//  bottom: 0;
-//  left: 0;
-//  right: 0;
-//  border: 2px solid #f43;
-//}
 
 .mobile-header {
   display: none;
@@ -85,16 +59,60 @@
   letter-spacing: 1px;
 }
 
+// TODO mobile view should be improved before next release :)
 @media screen and (max-width: 960px) {
   .grid-container {
     display: block;
+    border-radius: unset;
+    margin: unset;
+    border: unset;
+  }
+
+  .grid-item:hover {
+    cursor: pointer;
+  }
+
+  .grid-item {
+    border: 5px solid #F5F6FA;
   }
 
   .web-header {
     display: none;
   }
 
+  .calendar__title {
+    display: none;
+  }
+
+  .arrow--down {
+    box-sizing: border-box;
+    height: 12px;
+    width: 12px;
+    border-style: solid;
+    border-width: 0px 2px 2px 0px;
+    transform: rotate(45deg);
+    transition: border-width 150ms ease-in-out;
+    margin-left: auto;
+    z-index: 1;
+  }
+
+  .arrow--up {
+    box-sizing: border-box;
+    height: 12px;
+    width: 12px;
+    border-style: solid;
+    border-width: 0px 2px 2px 0px;
+    transform: rotate(225deg);
+    transition: border-width 150ms ease-in-out;
+    margin-left: auto;
+    z-index: 1;
+  }
+
   .mobile-header {
-    display: block;
+    display: flex;
+    text-align: start;
+    background-color: #F5F6FA;
+    color: #5A5A5A;
+    margin: 20px;
   }
 }

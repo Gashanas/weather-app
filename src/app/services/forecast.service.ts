@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {meteoApiUrl} from '../shared/constants';
-import {City, LongTermForecast, Place} from '../shared/types';
+import {City, LongTermForecast} from '../shared/types';
 import {map} from 'rxjs/operators';
 
 @Injectable({
@@ -27,6 +27,7 @@ export class ForecastService {
     );
   }
 
+  // Creating Array of forecast by displayed hours
   getDisplayedForecast(dates, displayedHours, groupedForecastObject) {
     const displayedObject = {};
     dates.forEach(date => {
@@ -43,6 +44,7 @@ export class ForecastService {
     return displayedObject;
   }
 
+  // Splitting timestamp param to date and time (ex: date: '2020-01-26' and time: '13' (13pm))
   private splitTimestampProperty(array) {
     return array.map(timestamp => ({
       ...timestamp,
@@ -51,6 +53,7 @@ export class ForecastService {
     }));
   }
 
+  // Remapping forecastResponse to be grouped by date so it will be easy to use it in calendar by date
   private groupArrayByProperty(array, key) {
     const groupedArray = {};
     const keys = [];
